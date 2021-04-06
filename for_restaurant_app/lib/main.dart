@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:for_restaurant_app/main_model.dart';
+import 'package:provider/provider.dart';
 
 void main() {
   runApp(MyApp());
@@ -6,30 +8,6 @@ void main() {
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.indigo,
-      ),
-      home: MyHomePage(title: 'demo'),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
-
-  final String title;
-
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-
-  int _selectedIndex = 0;
 
   static List<Widget> _pageList = [
     Card(
@@ -40,11 +18,11 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
     ),
     Card(
-        color: Colors.yellow,
-        child: Container(
-          width: 100,
-          height: 100,
-        ),
+      color: Colors.yellow,
+      child: Container(
+        width: 100,
+        height: 100,
+      ),
     ),
     Card(
       color: Colors.red,
@@ -55,43 +33,49 @@ class _MyHomePageState extends State<MyHomePage> {
     ),
   ];
 
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
+    return MaterialApp(
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        primarySwatch: Colors.indigo,
       ),
-      body:Center(
-        child: _pageList[_selectedIndex]
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.receipt_long),
-            label: "レシート",
+      home: ChangeNotifierProvider<MainModel>(
+        create: (_) => MainModel(),
+        child: Consumer<MainModel>(builder: (context, model, child) {
+          return Scaffold(
+            appBar: AppBar(
+              title: Text("demo"),
+            ),
+            body: Center(
+                child: _pageList[model.selectedIndex]
+            ),
+            bottomNavigationBar: BottomNavigationBar(
+              items: [
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.receipt_long),
+                  label: "レシート",
 
+                ),
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.fastfood_outlined),
+                  label: "管理",
+                ),
+                BottomNavigationBarItem(
+                    icon: Icon(Icons.settings_applications),
+                    label: "設定"
+                ),
+              ],
+              currentIndex: model.selectedIndex,
+              selectedItemColor: Colors.indigo,
+              onTap: (index){
+                model.onItemTapped(index);
+              },
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.fastfood_outlined),
-            label: "管理",
-          ),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.settings_applications),
-            label: "設定"
-          ),
-        ],
-        currentIndex: _selectedIndex,
-        selectedItemColor: Colors.indigo,
-        onTap: _onItemTapped,
+          );
+        }),
       ),
-
     );
-
   }
 }
