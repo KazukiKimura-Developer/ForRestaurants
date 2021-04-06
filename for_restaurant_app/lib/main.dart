@@ -29,6 +29,38 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
 
+  int _selectedIndex = 0;
+
+  static List<Widget> _pageList = [
+    Card(
+      color: Colors.blue,
+      child: Container(
+        width: 100,
+        height: 100,
+      ),
+    ),
+    Card(
+        color: Colors.yellow,
+        child: Container(
+          width: 100,
+          height: 100,
+        ),
+    ),
+    Card(
+      color: Colors.red,
+      child: Container(
+        width: 100,
+        height: 100,
+      ),
+    ),
+  ];
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,8 +68,30 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       body:Center(
-
+        child: _pageList[_selectedIndex]
       ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.receipt_long),
+            label: "レシート",
+
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.fastfood_outlined),
+            label: "管理",
+          ),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.settings_applications),
+            label: "設定"
+          ),
+        ],
+        currentIndex: _selectedIndex,
+        selectedItemColor: Colors.indigo,
+        onTap: _onItemTapped,
+      ),
+
     );
+
   }
 }
