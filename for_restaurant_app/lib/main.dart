@@ -18,8 +18,8 @@ class MyApp extends StatelessWidget {
 
     List<Widget> _pageList = [
       ReceiptPage(),
-      SettingPage(),
       NutritionManagementPage(),
+      SettingPage(),
     ];
 
     return MaterialApp(
