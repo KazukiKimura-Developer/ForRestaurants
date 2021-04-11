@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 
 class MainModel extends ChangeNotifier {
-  int selectedIndex = 0;
+  int _selectedIndex = 0;
 
-  void onItemTapped(int index) {
-    selectedIndex = index;
+  get selectedIndex => _selectedIndex;
+
+  set onItemTapped(int index) {
+    _selectedIndex = index;
     notifyListeners();
   }
 }

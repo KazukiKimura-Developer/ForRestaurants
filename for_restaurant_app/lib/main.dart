@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:for_restaurant_app/main_model.dart';
+import 'package:for_restaurant_app/pages/receipt_page.dart';
 import 'package:provider/provider.dart';
+import 'package:for_restaurant_app/pages/nutrition_management_page.dart';
+import 'package:for_restaurant_app/pages/setting_page.dart';
 
 void main() {
   runApp(MyApp());
@@ -9,33 +12,16 @@ void main() {
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
 
-  static List<Widget> _pageList = [
-    Card(
-      color: Colors.blue,
-      child: Container(
-        width: 100,
-        height: 100,
-      ),
-    ),
-    Card(
-      color: Colors.yellow,
-      child: Container(
-        width: 100,
-        height: 100,
-      ),
-    ),
-    Card(
-      color: Colors.red,
-      child: Container(
-        width: 100,
-        height: 100,
-      ),
-    ),
-  ];
-
 
   @override
   Widget build(BuildContext context) {
+
+    List<Widget> _pageList = [
+      ReceiptPage(),
+      SettingPage(),
+      NutritionManagementPage(),
+    ];
+
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
@@ -70,7 +56,7 @@ class MyApp extends StatelessWidget {
               currentIndex: model.selectedIndex,
               selectedItemColor: Colors.indigo,
               onTap: (index){
-                model.onItemTapped(index);
+                model.onItemTapped = index;
               },
           ),
           );
