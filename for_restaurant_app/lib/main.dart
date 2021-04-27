@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:for_restaurant_app/main_model.dart';
 import 'package:for_restaurant_app/pages/receipt_page.dart';
@@ -21,7 +22,6 @@ class MyApp extends StatelessWidget {
       NutritionManagementPage(),
       SettingPage(),
     ];
-
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
@@ -37,8 +37,9 @@ class MyApp extends StatelessWidget {
             body: Center(
                 child: _pageList[model.selectedIndex]
             ),
+
             bottomNavigationBar: BottomNavigationBar(
-              items: [
+              items: const<BottomNavigationBarItem>[
                 BottomNavigationBarItem(
                   icon: Icon(Icons.receipt_long),
                   label: "レシート",
@@ -65,3 +66,6 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
+
+
