@@ -5,6 +5,7 @@ import 'package:for_restaurant_app/pages/receipt_page.dart';
 import 'package:provider/provider.dart';
 import 'package:for_restaurant_app/pages/nutrition_management_page.dart';
 import 'package:for_restaurant_app/pages/setting_page.dart';
+import 'package:for_restaurant_app/pages/select_receipt_page.dart';
 
 void main() {
   runApp(MyApp());
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
 
     List<Widget> _pageList = [
-      ReceiptPage(),
+      SelectReceiptPage(),
       NutritionManagementPage(),
       SettingPage(),
     ];
