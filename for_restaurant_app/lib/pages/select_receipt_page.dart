@@ -23,8 +23,7 @@ class SelectReceiptPage extends StatelessWidget {
             default:
               return Consumer<SelectReceiptModel>(builder: (context, model, child) {
                 return ListView(
-                  children: snapshot.data.docs.map((
-                      DocumentSnapshot document) {
+                  children: snapshot.data.docs.map((DocumentSnapshot document) {
                     String receiptDate = document['created_at']
                         .toDate()
                         .toString();

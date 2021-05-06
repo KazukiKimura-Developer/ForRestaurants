@@ -36,10 +36,6 @@ class ReceiptPage extends StatelessWidget {
             }
 
 
-            print("サンバ");
-            print(model.menuName);
-
-
             return Scaffold(
               appBar: AppBar(
                 title: Text("レシート詳細"),
