@@ -54,20 +54,21 @@ class ReceiptCard extends StatelessWidget {
               //お店情報
 
               Text(model.restaurantName),
-              Text(model.restaurantPostNum),
+              Text("〒" + model.restaurantPostNum),
               Text(model.restaurantAddress),
+              Text("℡" + model.restaurantPhone),
               SizedBox(height: 30),
 
 
               Text(model.receiptDate),
 
-              //担当
-              Row(
-                children: [
-                  Text("レジ：00001　"),
-                  Text("担当:00001"),
-                ],
-              ),
+
+              // Row(
+              //   children: [
+              //     Text("レジ：00001　"),
+              //     Text("担当:00001"),
+              //   ],
+              // ),
 
               SizedBox(height:30),
 

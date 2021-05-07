@@ -3,6 +3,7 @@ import 'dart:ffi';
 import 'package:flutter/material.dart';
 import 'package:flutter_radar_chart/flutter_radar_chart.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:intl/intl.dart';
 import 'package:firebase_core/firebase_core.dart';
 
 class NutritionManagementPage extends StatelessWidget {
@@ -97,6 +98,12 @@ class NutritionManagementPage extends StatelessWidget {
                   child: Text(
                       "栄養摂取量",
                   )
+              ),
+
+              Container(
+                child: Text(
+                  DateFormat("yyyy年MM月dd日").format(DateTime.now()).toString()
+                ),
               ),
 
               Expanded(
